@@ -1,0 +1,157 @@
+<html>
+    <head>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Work+Sans&display=swap');
+
+            * {
+                font-family: 'Work Sans', sans-serif;
+            }
+
+            /* title 관련 */
+            #title {
+                text-align: center;
+            }
+
+            #title > span {
+                color: rgb(203, 0, 0);
+                font-size: 70px;   
+                font-family: 'Black Han Sans', sans-serif;
+            }
+
+            #title > span:hover {
+                cursor: pointer;
+                color:red;
+            }
+
+            #title img {
+                height:50px; width:50px;
+            }
+
+            /* 표 관련 */
+            table {
+                border: 3px solid rgb(203, 0, 0);
+                text-align: center;
+                margin-right: auto;
+                margin-left: auto;
+            }
+
+            table:hover {
+                border: 3px solid red;
+                text-align: center;
+                margin-right: auto;
+                margin-left: auto;
+            }
+
+            hr {
+                background:#e8e8e8;
+                height:1px;
+                border: 0px;
+            }
+
+            /* 주소 관련 */
+            a {
+                text-decoration-line:none;
+            }
+            a:visited{
+                color:black;
+            }
+            a:link{
+                color:black;
+            }
+
+            #tae:hover {
+                background-color:magenta;
+                color:white;
+                transform: scale(2);
+                transition: 1s;
+            }
+
+            #epik:hover {
+                background-color: chocolate;
+                color:white;
+                transition: 1s;
+            }
+
+            #kang:hover {
+                background-color: gold;
+                color:white;
+                transition: 1s;
+            }
+            
+            /* 이미지 관련 */
+            img {
+                cursor: pointer;
+            }
+            .first:hover {
+                transform: rotate(-5deg);
+                transition: 1s;
+            }
+            .second:hover {
+                transform: rotate(5deg);
+                transition: 1s;
+            }
+            .third:hover {
+                transform: rotate(-5deg);
+                transition: 1s;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <div id="title">
+            <img src="C:\Users\LG\Desktop\블로그\어서옵쇼.jpg";>
+            <span>리슨업~~♬</span>
+            <img src="C:\Users\LG\Desktop\블로그\어서옵쇼.jpg";>
+        </div>
+
+        <br>
+
+        <div id="main">
+            <p class="heart1"></p>
+            <p class="heart1"></p>
+            <p class="heart2"></p>
+            <p class="heart2"></p>
+            <p class="heart3"></p>
+            <p class="heart3"></p>
+            <p class="heart4"></p>
+            <p class="heart4"></p>
+            <p class="heart5"></p>
+            <p class="heart5"></p>
+            <p class="heart6"></p>
+            <p class="heart6"></p>
+            <table cellspacing="10">
+                <tr>
+                    <td>
+                        <a id="tae" href="https://youtu.be/5LbFdY6vGsQ"; target="_blank";>TAEYEON 태연 'What Do I Call You'</a>
+                        <br><br>
+                        <img class="first" src="C:\Users\LG\Desktop\블로그\음악감상.jpg"; width="300"; height="250"; title="muzik">
+                        <br><br>
+                        <a id="tae" href="https://youtu.be/5LbFdY6vGsQ"; target="_blank";>TAEYEON 태연 'What Do I Call You'</a>
+                        <hr>
+                    </td>
+                </tr>
+                <tr>
+                    <td>   
+                        <a id="epik" href="https://youtu.be/VbIf3z2SqHg"; target="_blank";>EPIK HIGH (에픽하이) - AMOR FATI</a>
+                        <br><br>
+                        <img class="second" src="C:\Users\LG\Desktop\블로그\음악감상2.jpg"; width="300"; height="300";>
+                        <br><br>
+                        <a id="epik" href="https://youtu.be/VbIf3z2SqHg"; target="_blank";>EPIK HIGH (에픽하이) - AMOR FATI</a>
+                        <hr>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <a id="kang" href="https://youtu.be/QPUjV7epJqE"; target="_blank";>강다니엘(KANGDANIEL) - Upside Down</a>
+                        <br><br>
+                        <img class="third" src="C:\Users\LG\Desktop\블로그\음악감상3.jpg"; width="380"; height="250";>
+                        <br><br>
+                        <a id="kang" href="https://youtu.be/QPUjV7epJqE"; target="_blank";>강다니엘(KANGDANIEL) - Upside Down</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>
