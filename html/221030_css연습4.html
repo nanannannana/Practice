@@ -21,14 +21,53 @@
             }
 
             #title > span:hover {
-                cursor: pointer;
                 color:red;
                 border: 7px double rgb(206, 203, 203);
                 cursor: pointer;
+                transition: 0.5s;
             }
 
             #title img {
                 height:50px; width:50px;
+            }
+
+            .heart1 {
+                position:fixed;
+                top:10px;
+            }
+            .heart2 {
+                position:fixed;
+                top: 10px; left:65px;
+            }
+            .heart3 {
+                position:fixed;
+                top: 10px; left:123px;
+            }
+            .heart4 {
+                position:fixed;
+                top: 10px; left:181px;
+            }
+            .heart5 {
+                position:fixed;
+                top: 10px; right:7px;
+            }
+            .heart6 {
+                position:fixed;
+                top: 10px; right:65px;
+            }
+            .heart7 {
+                position:fixed;
+                top: 10px; right:123px;
+            }
+            .heart8 {
+                position:fixed;
+                top: 10px; right:181px;
+            }
+            .heartr:hover {
+                transform: rotate(-10deg);
+            }
+            .heartl:hover {
+                transform: rotate(10deg);
             }
 
             /* 표 관련 */
@@ -116,6 +155,17 @@
                 bottom: -50px;
                 z-index:-1;
             }
+            /* 밑 */
+            .end {
+                font-family: 'Black Han Sans', sans-serif;
+                text-align: center;
+                font-size: 30px;
+                cursor: pointer;
+            }
+            .end:active {
+                color:white;
+                cursor: pointer;
+            }
 
         </style>
     </head>
@@ -128,7 +178,16 @@
                 <img src="C:\Users\LG\Desktop\블로그\어서옵쇼.jpg";>
             </span>
         </div>
-
+        <div>
+            <img id="heart" class="heartr heart1" src="C:\Users\LG\Desktop\SeSAC\github\practice\html\사진\하트.png">
+            <img id="heart" class="heartr heart2" src="C:\Users\LG\Desktop\SeSAC\github\practice\html\사진\하트.png">
+            <img id="heart" class="heartr heart3" src="C:\Users\LG\Desktop\SeSAC\github\practice\html\사진\하트.png">
+            <img id="heart" class="heartr heart4" src="C:\Users\LG\Desktop\SeSAC\github\practice\html\사진\하트.png">
+            <img id="heart" class="heartl heart5" src="C:\Users\LG\Desktop\SeSAC\github\practice\html\사진\하트.png">
+            <img id="heart" class="heartl heart6" src="C:\Users\LG\Desktop\SeSAC\github\practice\html\사진\하트.png">
+            <img id="heart" class="heartl heart7" src="C:\Users\LG\Desktop\SeSAC\github\practice\html\사진\하트.png">
+            <img id="heart" class="heartl heart8" src="C:\Users\LG\Desktop\SeSAC\github\practice\html\사진\하트.png">
+        </div>
         <br>
 
         <div id="main">
@@ -165,8 +224,11 @@
             </table>
         </div>
         <div>
-            <img class=listen src="음악감상.png" width="100%" height="300">
-            <img class=listen src="음악감상.png" width="100%" height="300">
+            <img class=listen src="C:\Users\LG\Desktop\SeSAC\github\practice\html\사진\음악감상.png" width="100%" height="300">
+            <img class=listen src="C:\Users\LG\Desktop\SeSAC\github\practice\html\사진\음악감상.png" width="100%" height="300">
+        </div>
+        <div id="down">
+            <p class="end">~ 안녕히가세용 ~</p>
         </div>
     </body>
 </html>
