@@ -1,0 +1,215 @@
+<html>
+    <head>
+        <style>
+            .container {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width:100%; height:100%;
+            }
+            #circle1 {
+                position: relative;
+                width: 300px; height:300px;
+                border-radius: 300px;
+                background-color: red;
+            }
+            #triangle1 {
+                width:0;
+                height:0;
+                border-bottom:50px solid orange;
+                border-top:50px solid none;
+                border-left:30px solid transparent;
+                border-right:30px solid transparent;
+                position:relative;
+                transform-origin: center 210px;
+                bottom:88%;
+                left:47.5%;
+                margin-bottom:-50px;
+                /* bottom:88.5%;
+                left:45%;
+                margin-bottom:-50px; */
+            }
+            #triangle2 {
+                width:0;
+                height:0;
+                border-bottom:50px solid rgb(255, 223, 39);
+                border-top:50px solid none;
+                border-left:30px solid transparent;
+                border-right:30px solid transparent;
+                position:relative;
+                transform-origin: center 210px;
+                bottom:88%;
+                left:47.5%;
+                margin-bottom:-50px;
+                /* bottom:88.5%;
+                left:45%;
+                margin-bottom:-50px; */
+            }
+            .triangle1 {
+                z-index:10;
+                animation-name: rotate1;
+                animation-duration: 30s;
+                animation-iteration-count: 3;
+                animation-timing-function: linear;
+            }
+            @keyframes rotate1 {
+                0% {transform:rotate(0deg);}
+                25% {transform: rotate(90deg);}
+                50% {transform:rotate(180deg);}
+                75% {transform:rotate(270deg);}
+                100% {transform:rotate(360deg);}
+            }
+            .triangle2 {
+                z-index:9;
+                animation-name: rotate2;
+                animation-duration: 30s;
+                animation-iteration-count: 3;
+                animation-timing-function: linear;
+                animation-delay: 3s;
+            }
+            @keyframes rotate2 {
+                0% {transform:rotate(0deg);opacity:1;}
+                25% {transform: rotate(90deg); opacity:0;}
+                50% {transform:rotate(180deg);opacity:1;}
+                75% {transform:rotate(270deg);opacity:0;}
+                100% {transform:rotate(360deg);opacity:1;}
+            }
+            .triangle3 {
+                z-index:8;
+                animation-name: rotate3;
+                animation-duration: 30s;
+                animation-iteration-count: 3;
+                animation-timing-function: linear;
+                animation-delay: 6s;
+            }
+            @keyframes rotate3 {
+                0% {transform:rotate(0deg);}
+                25% {transform: rotate(90deg);}
+                50% {transform:rotate(180deg);}
+                75% {transform:rotate(270deg);}
+                100% {transform:rotate(360deg);}
+            }
+            .triangle4 {
+                z-index:7;
+                animation-name: rotate4;
+                animation-duration: 30s;
+                animation-iteration-count: 3;
+                animation-timing-function: linear;
+                animation-delay: 9s;
+            }
+            @keyframes rotate4 {
+                0% {transform:rotate(0deg);opacity:0;}
+                25% {transform: rotate(90deg); opacity:1;}
+                50% {transform:rotate(180deg);opacity:0;}
+                75% {transform:rotate(270deg);opacity:1;}
+                100% {transform:rotate(360deg);opacity:0;}
+            }
+            .triangle5 {
+                z-index:6;
+                animation-name: rotate5;
+                animation-duration: 30s;
+                animation-iteration-count: 3;
+                animation-timing-function: linear;
+                animation-delay: 12s;
+            }
+            @keyframes rotate5 {
+                0% {transform:rotate(0deg);}
+                25% {transform: rotate(90deg);}
+                50% {transform:rotate(180deg);}
+                75% {transform:rotate(270deg);}
+                100% {transform:rotate(360deg);}
+            }
+
+            .triangle6 {
+                z-index:5;
+                animation-name: rotate6;
+                animation-duration: 30s;
+                animation-iteration-count: 3;
+                animation-timing-function: linear;
+                animation-delay: 15s;
+            }
+            @keyframes rotate6 {
+                0% {transform:rotate(0deg);opacity:1;}
+                25% {transform: rotate(90deg); opacity:0;}
+                50% {transform:rotate(180deg);opacity:1;}
+                75% {transform:rotate(270deg);opacity:0;}
+                100% {transform:rotate(360deg);opacity:1;}
+            }
+            .triangle7 {
+                z-index:4;
+                animation-name: rotate7;
+                animation-duration: 30s;
+                animation-iteration-count: 3;
+                animation-timing-function: linear;
+                animation-delay: 18s;
+            }
+            @keyframes rotate7 {
+                0% {transform:rotate(0deg);}
+                25% {transform: rotate(90deg);}
+                50% {transform:rotate(180deg);}
+                75% {transform:rotate(270deg);}
+                100% {transform:rotate(360deg);}
+            }
+            .triangle8 {
+                z-index:3;
+                animation-name: rotate8;
+                animation-duration: 30s;
+                animation-iteration-count: 3;
+                animation-timing-function: linear;
+                animation-delay: 21s;
+            }
+            @keyframes rotate8 {
+                0% {transform:rotate(0deg);opacity:0;}
+                25% {transform: rotate(90deg); opacity:1;}
+                50% {transform:rotate(180deg);opacity:0;}
+                75% {transform:rotate(270deg);opacity:1;}
+                100% {transform:rotate(360deg);opacity:0;}
+            }
+            .triangle9 {
+                z-index:2;
+                animation-name: rotate9;
+                animation-duration: 30s;
+                animation-iteration-count: 3;
+                animation-timing-function: linear;
+                animation-delay: 24s;
+            }
+            @keyframes rotate9 {
+                0% {transform:rotate(0deg);}
+                25% {transform: rotate(90deg);}
+                50% {transform:rotate(180deg);}
+                75% {transform:rotate(270deg);}
+                100% {transform:rotate(360deg);}
+            }
+            .triangle10 {
+                z-index:1;
+                animation-name: rotate10;
+                animation-duration: 30s;
+                animation-iteration-count: 3;
+                animation-timing-function: linear;
+                animation-delay: 27s;
+            }
+            @keyframes rotate10 {
+                0% {transform:rotate(0deg);opacity:1;}
+                25% {transform: rotate(90deg); opacity:0;}
+                50% {transform:rotate(180deg);opacity:1;}
+                75% {transform:rotate(270deg);opacity:0;}
+                100% {transform:rotate(360deg);opacity:1;}
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div id="circle1"></div>
+        </div>
+        <div id="triangle1" class="triangle1"></div>
+        <div id="triangle2" class="triangle2"></div>
+        <div id="triangle1" class="triangle3"></div>
+        <div id="triangle2" class="triangle4"></div>
+        <div id="triangle1" class="triangle5"></div>
+        <div id="triangle2" class="triangle6"></div>
+        <div id="triangle1" class="triangle7"></div>
+        <div id="triangle2" class="triangle8"></div>
+        <div id="triangle1" class="triangle9"></div>
+        <div id="triangle2" class="triangle10"></div>
+    </body>
+</html>
