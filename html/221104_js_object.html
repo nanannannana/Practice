@@ -1,11 +1,52 @@
 <html>
     <head>
         <script>
-            const now = Date.now();
-            console.log(now);
+            var arr1 = [1,2,3,'a','b','c']
+            var arr2 = new Array(1,2,3,'a','b','c')
+            console.log(arr1[2]);
+            console.log(arr2[5]);
+            console.log(arr1.length);
+            console.log(arr1.indexOf(2));
+            arr2.push('d');
+            console.log(arr2);
+            arr2.pop();
+            console.log(arr2);
+            arr1.unshift('hello');
+            console.log(arr1);
+            arr1.shift();
+            console.log(arr1);
 
-            var d = Date.parse('1970/01/02/09:00:00');
-            console.log(parse);
+            //딕셔너리
+            console.log('--------------');
+            var me = {
+                name: 'yeji',
+                birth: '0204'
+            };
+            
+            me.gender = 'F';
+            me['age'] = 23;
+            console.log(me);
+            console.log(me.age);
+
+            //js 표준 객체
+            //Date
+            var date = new Date(16,5,25);
+            console.log(date);
+            var date2 = new Date(2016,5,25,15,40); //Sun Jun(월은 0이 1월) 25 1916 00:00:00
+            console.log(date2); //Sat Jun 25 2016 15:40:00
+            var date3 = Date.now();
+            console.log(date3);
+            console.log('------------');
+            var date4 = new Date();
+            var year = date4.getFullYear();
+            var month = date4.getMonth();
+            var month2 = parseInt(month)+1;
+            var datee = date4.getDate();
+            var hour = date4.getHours();
+            var min = date4.getMinutes();
+            var sec = date4.getSeconds();
+            var date5 = year+"-"+month2+"-"+datee+" "+hour+":"+min+":"+sec;
+            console.log(date5);
         </script>
     </head>
 </html>
