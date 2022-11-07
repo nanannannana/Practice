@@ -1,0 +1,89 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+        <style>
+            #main {
+                height: 100%;
+                display:flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction:column;
+            }
+            #box {
+                width:300px;
+                border-radius:50px;
+                border: 5px solid blue;
+
+                text-align: center;
+                padding: 50px 0px;
+
+                line-height:20px;
+
+                /* display: flex;
+                justify-content: center;
+                align-items: center; */
+            }
+            
+            p {
+                font-size: 50px;
+                font-weight: bold;
+            }
+        </style>
+        <script>
+            function carret() {
+                $('p').remove();
+                $('img').remove();
+                $("#box").append("<img src='./cake.jpg'>");
+                $('img').attr('width','100%','height','100%')
+            }
+
+            function straw() {
+                $('p').remove();
+                $('img').remove();
+                $("#box").append("<img src='./cake2.jpg'>");
+                $('img').attr('width','100%','height','100%');
+                // $('img').attr('src','cake2.jpg');
+            }
+            function coffee() {
+                $('p').remove();
+                $('img').remove();
+                $("#box").append("<img src='./커피.jpg'>");
+                $('img').attr('width','100%','height','100%');
+                // $('img').attr('src','커피.jpg');
+            }
+            function bing() {
+                $('p').remove();
+                $('img').remove();
+                $("#box").append("<img src='./팥빙수.jpg'>");
+                $('img').attr('width','100%','height','100%');
+                // $('img').attr('src','팥빙수.jpg');
+            }
+            function back() {
+                $('p').remove();
+                $('img').remove();
+                $('#box').append('<p>무슨음식이</p>');
+                $('#box').append('<p>나올까?</p>');
+            }
+        </script>
+    </head>
+    <body>
+        <div id="main">
+            <div id="box">
+                <p>무슨음식이</p>
+                <p>나올까?</p>
+                <!-- <img src="./cake.jpg" width="100%" height="100%"> -->
+            </div>
+            <br>
+            <div id="button">
+                <button type="button" onclick="carret()">일번</button>
+                <button type="button" onclick="straw()">이번</button>
+                <button type="button" onclick="coffee()">삼번</button>
+                <button type="button" onclick="bing()">사번</button>
+            </div>
+            <br>
+            <div>
+                <button type="button" onclick="back()">처음으로</button>
+            </div>
+        </div>
+    </body>
+</html>
