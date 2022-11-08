@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <script>
+
+        </script>
+    </head>
+    <body>
+        <span>값1:</span>
+        <input type="text" id="input1">
+        <br>
+        <span>값2:</span>
+        <input type="text" id="input2">
+        <br>
+        <span>연산자:</span>
+        <input type="text" id="input3">
+        <br>
+        <span>결과:</span>
+        <input type="text" id="input4">
+        <br><br>
+        <button type="button" onclick="add()">계산하기</button>
+        <button type="button" onclick="remove()">초기화</button>
+
+        <script>
+            function add() {
+                var value1 = document.getElementById('input1').value;
+                var value2 = document.getElementById('input2').value;
+                var value3 = document.getElementById('input3').value;
+                if (value3=="+") {
+                    result = value1+value2;
+                } else if (value3=="-") {
+                    result = value1-value2;
+                } else if (value3=="*") {
+                    result = value1*value2;
+                } else if (value3=="/") {
+                    result = value1/value2;
+                }
+                document.getElementById('input4').value = result;
+            }
+            function remove() {
+                document.getElementById('input1').value = "";
+                document.getElementById('input2').value = "";
+                document.getElementById('input3').value = "";
+                document.getElementById('input4').value = "";
+            }
+        </script>
+    </body>
+</html>
