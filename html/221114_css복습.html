@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <style>
+            div {
+                width       : 200px;
+                height      : 200px;
+            }
+            #first {
+                position    : relative; 
+                z-index     : 30;
+                background-color  : red;
+            }
+            #second {
+                position    : relative;
+                text-align: -200px; 
+                z-index     : 20;
+                margin-top  : -100px;
+                background-color  : blue;
+            }
+            #third {
+                position    : relative;
+                text-align: right;
+                z-index     : 50;
+                margin-top  : -100px;
+                margin-left : 100px;
+                background-color  : green;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="first">
+            1st Box
+        </div>
+        <div id="second">
+            2nd Box 
+            <div id="third">3rd Box</div>
+        </div>      
+    </body>
+</html>
