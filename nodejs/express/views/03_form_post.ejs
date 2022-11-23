@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>study5</title>
+</head>
+<body>
+    <form action="/postform" method="post">
+        <h1>쿠키만들기</h1>
+        쿠키이름 <input type="text" name="cookie" required><br>
+        쿠키색깔 <input type="color" name="color" required><br>
+        정보 받을 이메일 <input type="email" name="email" required><br>
+        <fieldset>
+            <legend>맛 선택</legend>
+            <input type="radio" name="flavor" value="redvelvat" id="r"><label for="r">레드벨벳</label>
+            <input type="radio" name="flavor" value="darkchoco" id="d"><label for="d">다크초코</label>
+            <input type="radio" name="flavor" value="plain" id="p"><label for="p">플레인</label>
+        </fieldset>
+        <fieldset>
+            <legend>재료 선택</legend>
+            <input type="checkbox" name="ingredient" value="almond" id="a"><label for="a">아몬드</label>
+            <input type="checkbox" name="ingredient" value="chocolate" id="ch"><label for="ch">초콜릿</label>
+            <input type="checkbox" name="ingredient" value="cinamon" id="ci"><label for="ci">시나몬</label>
+        </fieldset>
+        <button type="submit">접수완료</button>
+    </form>
+</body>
+</html>
