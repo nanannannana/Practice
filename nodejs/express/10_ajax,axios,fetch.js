@@ -8,7 +8,7 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 
 app.get('/', function(req,res){
-    res.render("06_fetch1");
+    res.render("06_fetch3");
 })
 //axios
 app.get('/get', function(req,res) {
@@ -52,6 +52,10 @@ app.get('/get2', function(req,res) {
     res.send(req.query);
 })
 app.post('/fetch2', function(req,res) {
+    console.log(req.body);
+    res.send(req.body);
+})
+app.post('/fetch3', function(req,res) {
     console.log(req.body);
     res.send(req.body);
 })
