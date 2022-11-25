@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function get() {
+            var form = document.getElementById("form_info");
+            var p1 = document.querySelector("p");
+            var body = document.querySelector("body");
+            //urlQuery를 통해 data값 입력
+            var urlQuery = `?id=${form.id.value}&pw=${form.pw.value}`;
+            //fetch(url,option) **fetch의 기본값이 get이기 때문에 option을 따로 지정해주지 않아도 됨
+            fetch("/get2"+urlQuery)
+            //json파일을 가져와 console에 출력
+            //응답은 Respose객체로 표현 -> json 본문 콘텐츠 추출을 위해 .json()호출
+            .then((response) => response.json())
+            // 클라이언트에게 보낼 화면 코드 작성
+            .then((data) => {
+                if (data.id == "nana11" && data.pw =="1212") {
+                    p1.remove();
+                    p1.innerText = "로그인 성공"
+                    p1.style.color = "blue";
+                    body.append(p1);
+                } else {
+                    p1.remove();
+                    p1.innerText = "다시 입력하세요"
+                    p1.style.color = "red";
+                    body.append(p1);
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+    <form id="form_info">
+        ID <input type="text" name="id">
+        PW <input type="password" name="pw">
+        <button type="button" onclick="get()">login</button>
+    </form>
+    <p id="p1"></p>
+</body>
+</html>

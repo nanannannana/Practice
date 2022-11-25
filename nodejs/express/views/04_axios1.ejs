@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>axios</title>
+    <script>
+        function get() {
+            var form = document.getElementById("form_info");
+            var p1 = document.getElementById("p1");
+            var body = document.querySelector('body');
+            axios({
+                method: "get",
+                url: "/get",
+                params: {
+                    id: form.id.value,
+                    pw: form.pw.value
+                }
+            })
+            .then(function(res){
+                // console.log(res);
+                // console.log(p1);
+                p1.remove();
+                p1.innerText = res.data;
+                if (res.data == "로그인 성공") {
+                    p1.style.color = "blue";
+                } else {
+                    p1.style.color = "red";
+                }
+                body.append(p1);             
+            })
+        }
+    </script>
+</head>
+<body>
+    <form id="form_info">
+        ID <input type="text" name="id">
+        PW <input type="password" name="pw">
+        <button type="button" onclick="get()">login</button>
+    </form>
+    <p id="p1"></p>
+</body>
+</html>

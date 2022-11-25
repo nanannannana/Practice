@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <title>ajax</title>
+    <script>
+        function get() {
+            form = document.getElementById("form_info");
+            p1 = document.querySelector("#p1");
+            body = $("body");
+            $.ajax({
+                type: "get",
+                url: "/get1",
+                data: {
+                    id: form.id.value,
+                    pw: form.pw.value
+                },
+                success: function(res) {
+                    p1.remove();
+                    p1.innerText = res;
+                    if (res == "로그인 성공") {
+                        p1.style.color = "blue";
+                    } else {
+                        p1.style.color = "red";
+                    }
+                    body.append(p1);
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+    <form id="form_info">
+        ID <input type="text" name="id">
+        PW <input type="password" name="pw">
+        <button type="button" onclick="get()">login</button>
+    </form>
+    <p id="p1"></p>
+</body>
+</html>
