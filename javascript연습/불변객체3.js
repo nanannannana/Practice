@@ -8,7 +8,7 @@ var copyObject = function(target) {
     for (var prop in target) {
         result[prop] = target[prop];
     }
-    //for in 문법을 이용하여 result객체에 target객체의 프로퍼티들을(keys) 복사
+    //for in 문법을 이용하여 result객체에 target객체의 프로퍼티들을 복사
     return result;
 }
 var user2 = copyObject(user);

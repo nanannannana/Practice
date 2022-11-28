@@ -6,7 +6,6 @@ var obj = {
     }
 };
 
-
 var copyObjectViaJSON = function (target) {
     return JSON.parse(JSON.stringify(target));
 };
