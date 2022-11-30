@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mysql</title>
+</head>
+<body>
+    <table border style="text-align: center" cellspacing="2" cellpadding="10">
+        <tr>
+            <td>index</td>
+            <td>id</td>
+            <td>name</td>
+            <td>birthday</td>
+        </tr>
+        <% for(i=0; i<rows.length ; i++) { %>
+            <tr>
+                <td><%=i+1%></td>
+                <td><%=rows[i].id%></td>
+                <td><%=rows[i].name%></td>
+                <td><%=rows[i].birthday%></td>
+            </tr>
+        <% } %>
+    </table>
+</body>
+</html>
