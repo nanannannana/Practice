@@ -35,10 +35,6 @@ router.patch("/modify_suc",
         .trim()
         .isLength({min:2})
         .notEmpty(),
-    body("id")
-        .trim()
-        .isLength({min:8,max:16})
-        .notEmpty(),
     body("pw")
         .trim()
         .isLength({min:8,max:16})

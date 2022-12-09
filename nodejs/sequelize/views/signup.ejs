@@ -11,9 +11,9 @@
     <h3>signup</h3>
     <form id="form_info">
         이름 <input type="text" name="name"><br>
-        ID <input type="text" name="id" placeholder="8~16글자, 공백불가">
+        ID <input type="text" name="id" placeholder="8~16글자">
         <button type="button" onclick="id_dupl()">ID 중복확인</button><br>
-        PW <input type="password" name="pw" placeholder="8~16글자, 공백불가"><br><br>
+        PW <input type="password" name="pw" placeholder="8~16글자"><br><br>
         <button type="button" onclick="signup();">가입하기</button>
         <button type="button" onclick="location.href='login'">로그인하기</button>
     </form>
@@ -49,9 +49,9 @@
                 } else if (res.data==false) {
                     alert("중복된 ID 입니다. 변경하세요!");
                 } else if(res.data=="err_id") {
-                    alert("id 조건: 공백 불가, 8~16글자");
+                    alert("id 조건: 8~16글자");
                 } else if (res.data=="err_pw") {
-                    alert("password 조건: 공백 불가, 8~16글자");
+                    alert("password 조건: 8~16글자");
                 } else if (res.data=="err_name") {
                     alert("이름을 정확히 입력하세요");
                 }

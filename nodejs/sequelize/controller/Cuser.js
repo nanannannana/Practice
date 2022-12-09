@@ -79,15 +79,21 @@ exports.info_modify = async function(req,res) {
     if (result.length !== 0) res.render("modify", { info: result[0]});
 }
 
-//수정 전
-exports.info_modify_suc = function(req,res) {
+exports.info_modify_suc = async function(req,res) {
     const errors = validationResult(req);
     if (errors.errors.length==0) {
-        user.info_modify_suc(req.body, function() {
-            res.send(true);
-        })
+        let data = {
+            id: req.body.id,
+            pw: req.body.pw,
+            name: req.body.name
+        };
+        await User.update(data, {
+            where: {id: req.body.id}
+        });
+        res.send(true);
     } else {
-        res.send(errors);
+        if (errors.errors[0].param=="pw") res.send("err_pw")
+        else if (errors.errors[0].param=="name") res.send("err_name");
     }
 
 }

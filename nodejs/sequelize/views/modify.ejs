@@ -20,11 +20,9 @@
                 data: info_data
             })
             .then(function(res) {
-                if (res.data==true) {
-                    alert("회원정보 수정 완료!");
-                } else {
-                    alert("회원정보를 다시 입력하세요!");
-                }
+                if (res.data==true) alert("회원정보 수정 완료!")
+                else if (res.data=="err_pw") alert("PW 조건: 8~16글자 사이")
+                else if (res.data=="err_name") alert("이름을 정확히 입력하세요!");
             })
         }
         function info_del() {
@@ -49,7 +47,7 @@
     <h3>profile</h3>
     <form id="form_info">
         ID <input type="text" name="id" value="<%=info.id%>" readonly><br>
-        PW <input type="password" value="<%=info.pw%>" name="pw" placeholder="8~16글자, 공백불가"><br>
+        PW <input type="password" value="<%=info.pw%>" name="pw" placeholder="8~16글자"><br>
         이름 <input type="text" value="<%=info.name%>" name="name"><br><Br>
         <button type="button" onclick="modify();">회원정보수정</button>
         <button type="button" onclick="info_del();">회원탈퇴</button><br><br>
