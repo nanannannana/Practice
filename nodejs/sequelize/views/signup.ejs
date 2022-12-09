@@ -47,7 +47,7 @@
                     alert("회원가입 완료!");
                     location.href='/login';
                 } else if (res.data==false) {
-                    alert("ID를 변경하세요!");
+                    alert("중복된 ID 입니다. 변경하세요!");
                 } else if(res.data=="err_id") {
                     alert("id 조건: 공백 불가, 8~16글자");
                 } else if (res.data=="err_pw") {

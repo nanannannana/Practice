@@ -19,7 +19,6 @@ exports.signup_suc = async function(req,res) {
     const errors = validationResult(req);
     console.log(errors.errors[0]);
     if (errors.errors.length==0) {
-        var signup_flag = true;
         let result = await User.findAll({
             where: {id: req.body.id}
         });
@@ -30,9 +29,9 @@ exports.signup_suc = async function(req,res) {
                 name: req.body.name
             }
             await User.create(data);
-            res.send(signup_flag);
+            res.send(true);
         } else {
-            res.send(signup_flag==false);
+            res.send(false);
         }
     } else {
         if (errors.errors[0].param=="id") {
@@ -44,37 +43,43 @@ exports.signup_suc = async function(req,res) {
         }
     }
 }
-//         res.send(errors);
-
 
 exports.login = function(req,res) {
     res.render("login");
 }
 exports.login_suc = async function(req,res) {
     const errors = validationResult(req);
-    if (errors.errors[0].param=="id") {
-        res.send("err_id");
-    } else if (errors.errors[0].param=="pw"){
-        res.send("err_pw");
-    } else {
+    if (errors.errors.length==0) {
         let result = await User.findAll({
-            where: { 
-                id: req.body.id,
-                pw: req.body.pw
-            }
+            where: {id: req.body.id }
         });
-        if (result.length>=1) {
+        if (result.length==1) {
             res.send(true);
+        }
+    } else {
+        if (errors.errors[0].param=="id") {
+            res.send("err_id");
+        } else if (errors.errors[0].param=="pw") {
+            res.send("err_pw");
         }
     }
 }
 
 
-exports.info_modify = function(req,res) {
-    user.info_modify(req.body, function(rows) {
-        if (rows.length>=1) res.render("modify", { info: rows[0] });
+exports.info_modify = async function(req,res) {
+    let data = {
+        id: req.body.id,
+        pw: req.body.pw,
+        name: req.body.name
+    };
+    let result = await User.findAll({
+        where: {id: req.body.id}
     })
+    console.log(result[0]);
+    if (result.length !== 0) res.render("modify", { info: result[0]});
 }
+
+//수정 전
 exports.info_modify_suc = function(req,res) {
     const errors = validationResult(req);
     if (errors.errors.length==0) {
@@ -86,10 +91,9 @@ exports.info_modify_suc = function(req,res) {
     }
 
 }
-exports.info_del = function(req,res) {
-    user.info_del(req.body, function(result) {
-        del_flag=false;
-        if (result==1) del_falg = true;
-        res.send(del_flag);
-    })
+exports.info_del = async function(req,res) {
+    await User.destroy({
+        where: {id: req.body.id}
+    });
+    res.send(true);
 }
