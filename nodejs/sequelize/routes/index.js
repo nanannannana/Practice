@@ -1,8 +1,10 @@
 var express = require("express");
 var controller = require("../controller/Cuser");
+var user = require("../controller/User");
 const router = express.Router();
 const { body } = require("express-validator");
 
+router.get("/pagination", user.paginatedResults, user.pagination);
 router.get("/", controller.main);
 router.get("/signup", controller.signup_ing);
 router.post("/id_dupl", controller.id_dupl);
