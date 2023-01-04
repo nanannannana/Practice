@@ -3,10 +3,8 @@ const { User } = require("../model");
 exports.pagination = async(req,res) => {
     res.json(res.paginatedResults);
 }
-exports.paginatedResults = async () => {
-    let users = await User.findAll({
-        raw: true 
-    });
+
+exports.paginatedResults = () => {
     return async (req,res,next) => {
         const page = parseInt(req.query.page);
         const limit = parseInt(req.query.limit);
@@ -29,9 +27,9 @@ exports.paginatedResults = async () => {
                 limit: limit
             }
         }
-        // results.results = model.slice(startIndex, endIndex);
         try {
-            results.results = await users.find().limit(limit).skip(startIndex).exec();
+            // results.results = await users.find().limit(limit).skip(startIndex).exec();
+            results.results = await users.slice(startIndex, endIndex);
             res.paginatedResults = results;
             next();
         } catch (e) {

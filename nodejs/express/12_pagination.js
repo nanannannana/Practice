@@ -26,7 +26,7 @@ const users = [
     {id: 10, name: "User 10"}
 ]
 
-app.get("/posts", paginatedResults, (req,res) => {
+app.get("/posts", paginatedResults(posts), (req,res) => {
     res.json(res.paginatedResults);
 })
 app.get("/users", paginatedResults(users), (req,res) => {
