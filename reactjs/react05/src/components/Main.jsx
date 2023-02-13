@@ -12,7 +12,7 @@ export default function Main() {
 
   useEffect(() => {
     axios.get(WEATHER_URL).then((res) => {
-      //   console.log(res.data.response.body.items.item);
+      // console.log(res.data.response.body.items.item);
       let weatherArr = [];
       for (var i = 0; i < 9; i++)
         weatherArr.push(res.data.response.body.items.item[i * 6]);
