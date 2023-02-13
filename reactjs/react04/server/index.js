@@ -40,4 +40,15 @@ app.post('/access', async (req, res) => {
   res.send(access_token);
 });
 
+app.post('/unlink', async (req, res) => {
+  await axios
+    .post('https://kapi.kakao.com/v1/user/unlink', null, {
+      headers: {
+        Authorization: `Bearer ${req.body.data}`,
+      },
+    })
+    .then((res) => console.log(res.data));
+  res.send(true);
+});
+
 app.listen(port, () => console.log(port, '번 작동중'));
