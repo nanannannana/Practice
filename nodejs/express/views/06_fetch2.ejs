@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fetch</title>
+    <script>
+        function post() {
+            var form = document.getElementById("form_info");
+            var p1 = document.querySelector("p");
+            var body = document.querySelector("body");
+            //data객체를 통해 data값 입력
+            var data = {
+                id: form.id.value,
+                pw: form.pw.value
+            };
+            //fetch(url,option)
+            //post방식은 데이터를 생성해야 할 때 사용
+            //option인자에 headers옵셥으로 json포맷을 사용한다고 명시
+            //body옵션에 json.stringify()메소드는 javascript값이나 객체를 json문자열로 변환함
+            //배열로 전달할 경우 지정한 속성만 결과에 포함함
+            fetch("/fetch2",{
+                method: "post",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data),
+            })
+            //응답은 Respose객체(promise타입으로 반환)로 표현 -> json 본문 콘텐츠 추출을 위해 .json()호출
+            .then((response) => response.json())
+            // 클라이언트에게 보낼 화면 코드 작성
+            .then((data) => {
+                if (data.id == "nana11" && data.pw =="1212") {
+                    p1.remove();
+                    p1.innerText = "로그인 성공"
+                    p1.style.color = "blue";
+                    body.append(p1);
+                } else {
+                    p1.remove();
+                    p1.innerText = "다시 입력하세요"
+                    p1.style.color = "red";
+                    body.append(p1);
+                }
+            })
+        }
+    </script>
+</head>
+<body>
+    <form id="form_info">
+        ID <input type="text" name="id">
+        PW <input type="password" name="pw">
+        <button type="button" onclick="post()">login</button>
+    </form>
+    <p id="p1"></p>
+</body>
+</html>
