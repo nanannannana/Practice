@@ -1,6 +1,7 @@
 package sesac.apiPractice.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import sesac.apiPractice.Domain.User;
 import sesac.apiPractice.Dto.UserDTO;
 import sesac.apiPractice.Mapper.MainMapper;
@@ -8,6 +9,7 @@ import sesac.apiPractice.Mapper.MainMapper;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class MainService {
 
     @Autowired

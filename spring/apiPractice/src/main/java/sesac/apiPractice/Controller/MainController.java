@@ -21,4 +21,6 @@ public class MainController {
         model.addAttribute("list",userList);
         return "user";
     }
+
+//    @GetMapping("/")
 }
