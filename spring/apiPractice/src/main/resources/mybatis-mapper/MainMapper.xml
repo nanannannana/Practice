@@ -5,4 +5,16 @@
     <select id="retrieveAll" resultType="sesac.apiPractice.Domain.User">
         SELECT user.* FROM user
     </select>
+    <insert id="insertUser" parameterType="sesac.apiPractice.Domain.User">
+        INSERT INTO user (name, nickname) VALUES (#{name}, #{nickname})
+    </insert>
+    <delete id="delUser" parameterType="sesac.apiPractice.Domain.User">
+        DELETE FROM user WHERE id = #{id}
+    </delete>
+    <select id="selectUser" resultType="sesac.apiPractice.Domain.User">
+        SELECT * FROM user WHERE id=#{id}
+    </select>
+    <update id="updateUser">
+        UPDATE user SET name = #{name}, nickname = #{nickname} where id = #{id}
+    </update>
 </mapper>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        function userUpdate() {
+            let form = document.getElementById("form_info");
+            const data = {
+                id: form.id.value,
+                name: form.name.value,
+                nickname: form.nickname.value,
+            };
+            axios.patch(`/users`, data)
+                .then(() => {
+                    alert("수정이 완료되었습니다!");
+                    location.href="/";
+                })
+                .catch((err) => console.log(err));
+        };
+    </script>
+</head>
+<body>
+    <form id="form_info">
+        <input type="hidden" name="id" th:value="${user.getId()}">
+        이름: <input type="text" name="name" th:value="${user.getName()}" placeholder="name">
+        <br>
+        닉네임: <input type="text" name="nickname" th:value="${user.getNickname()}" placeholder="nickname">
+        <br>
+        <button type="button" onclick="userUpdate();">수정하기</button>
+    </form>
+</body>
+</html>

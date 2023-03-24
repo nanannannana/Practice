@@ -30,4 +30,20 @@ public class MainService {
         }
         return users;
     }
+
+    public void insertUser(User user) {mainMapper.insertUser(user);}
+
+    public void delUser(User user) {mainMapper.delUser(user);}
+
+    public UserDTO selectUser(UserDTO userDTO) {
+        User user = mainMapper.selectUser(userDTO.getId());
+        UserDTO user_info = new UserDTO();
+        user_info.setNo(user.getId());
+        user_info.setId(user.getId());
+        user_info.setName(user.getName());
+        user_info.setNickname(user.getNickname());
+        return user_info;
+    }
+
+    public void updateUser(User user) {mainMapper.updateUser(user);}
 }

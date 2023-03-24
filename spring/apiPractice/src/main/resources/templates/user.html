@@ -6,6 +6,36 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        function userDel(id) {
+            axios.delete(`/users`, {data: {id: id}})
+                .then((res) => {
+                    alert("삭제가 완료되었습니다");
+                    location.reload();
+                })
+                .catch((err) => alert("에러 발생"));
+        };
+        function userInsert() {
+            let form = document.getElementById("form_info");
+            const data = {
+                name: form.name.value,
+                nickname: form.nickname.value,
+            };
+            axios.post(`/users`, data)
+                .then((res) => {
+                    alert("추가가 완료되었습니다");
+                    location.reload();
+                })
+                .catch(() => alert("에러 발생"));
+        };
+        function userUpdate(No) {
+            let form = document.getElementById("form_hidden" + No);
+            form.action = "/user";
+            form.method = "post";
+            form.submit();
+        }
+    </script>
 </head>
 <body>
     <table>
@@ -20,7 +50,19 @@
             <td th:text="${user.getId()}">ID</td>
             <td th:text="${user.getName()}">이름</td>
             <td th:text="${user.getNickname()}">닉네임</td>
+            <form th:id="'form_hidden'+${user.getNo()}">
+                <input type="hidden" name="id" th:value="${user.getId()}" />
+            </form>
+            <td><button type="button" th:onclick="userDel([[${user.getId()}]]);" th:text="삭제" /></td>
+            <td><button type="button" th:onclick="userUpdate([[${user.getNo()}]]);" th:text="수정" /></td>
         </tr>
     </table>
+    <hr>
+    <form id="form_info">
+        이름: <input type="text" name="name" placeholder="name">
+        닉네임: <input type="text" name="nickname" placeholder="nickname">
+        <button type="button" onclick="userInsert();">추가</button>
+    </form>
+<!--    <button type="button" onclick="location.href = '/users'">추가하기</button>-->
 </body>
 </html>
