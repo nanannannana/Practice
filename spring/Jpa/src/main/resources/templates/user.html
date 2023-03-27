@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        function userInsert() {
+            const form = document.getElementById("form_info");
+            const data = {
+                name: form.name.value,
+                nickname: form.nickname.value,
+            };
+            axios.post(`/users`, data)
+                .then(() => {
+                    alert("추가되었습니다.");
+                    location.reload();
+                })
+                .catch((err) => console.log(err));
+        };
+
+        function userUpdate(id) {
+            const form = document.getElementById("form_hidden"+id);
+            form.action = "/user";
+            form.method = "post";
+            form.submit();
+        };
+
+        function userDel(id) {
+            axios.delete(`/users`, {data: {id: id}})
+                .then(() => {
+                    alert("삭제가 완료되었습니다.");
+                    location.reload();
+                })
+                .catch((err) => console.log(err));
+        };
+    </script>
+</head>
+<body>
+    <h2>사용자 정보</h2>
+    <table>
+        <tr>
+            <th>번호</th>
+            <th>ID</th>
+            <th>이름</th>
+            <th>닉네임</th>
+        </tr>
+        <tr th:each="user:${list}">
+            <td th:text="${user.getNo()}">번호</td>
+            <td th:text="${user.getId()}">ID</td>
+            <td th:text="${user.getName()}">이름</td>
+            <td th:text="${user.getNickname()}">닉네임</td>
+            <form th:id="'form_hidden'+${user.getId()}">
+                <input type="hidden" name="id" th:value="${user.getId()}" />
+            </form>
+            <td><button type="button" th:onclick="userDel([[${user.getId()}]]);" th:text="삭제" /></td>
+            <td><button type="button" th:onclick="userUpdate([[${user.getId()}]]);" th:text="수정" /></td>
+        </tr>
+    </table>
+    <hr>
+    <h2>추가하기</h2>
+    <form id="form_info">
+        이름: <input type="text" name="name" placeholder="name">
+        닉네임: <input type="text" name="nickname" placeholder="nickname">
+        <button type="button" onclick="userInsert();">추가</button>
+    </form>
+    <hr>
+    <h2>찾아보기</h2>
+    <form action="/users" method="get">
+        <input type="text" name="name" placeholder="이름 검색">
+        <button type="submit">검색</button>
+    </form>
+    <table id="success"></table>
+</body>
+</html>
