@@ -3,14 +3,15 @@ import { CreateBoardDto } from './dto/create-board.dto';
 import { BoardRepository } from './boards.repository';
 import { Board } from './board.schema';
 import { ObjectId } from 'mongoose';
+import { User } from 'src/auth/user.schema';
 
 @Injectable()
 export class BoardsService {
   constructor(private boardRepository: BoardRepository) {}
 
   // Read
-  async getBoardAll(): Promise<Board[]> {
-    return await this.boardRepository.findAll();
+  async getBoardAll(user: User): Promise<Board[]> {
+    return await this.boardRepository.findAll(user);
   }
 
   async getBoardById(id: ObjectId): Promise<Board> {
@@ -20,8 +21,11 @@ export class BoardsService {
   }
 
   //create
-  async createBoard(createBoardDto: CreateBoardDto): Promise<Board> {
-    return await this.boardRepository.create(createBoardDto);
+  async createBoard(
+    createBoardDto: CreateBoardDto,
+    user: User,
+  ): Promise<Board> {
+    return await this.boardRepository.create(createBoardDto, user);
   }
 
   // Update
@@ -30,7 +34,7 @@ export class BoardsService {
   }
 
   // Delete
-  async deleteBoard(id: ObjectId): Promise<string> {
-    return await this.boardRepository.deleteBoard(id);
+  async deleteBoard(id: ObjectId, user: User): Promise<string> {
+    return await this.boardRepository.deleteBoard(id, user);
   }
 }
