@@ -10,46 +10,46 @@ import {
   ValidationPipe,
 } from '@nestjs/common';
 import { BoardsService } from './boards.service';
-import { Board, BoardStatus } from './board.model';
+import { BoardStatus } from './board-status.enum';
 import { CreateBoardDto } from './dto/create-board.dto';
 import { BoardStatusValidationPipe } from './pipes/board-status-validation.pipe';
+import { Board } from './board.schema';
+import { ObjectId } from 'mongoose';
+import { ValidateObjectId } from './pipes/validate-object-id.pipe';
 
 @Controller('boards')
 export class BoardsController {
-  constructor(private boardsService: BoardsService) {}
-
-  // Read
-  // [1] 전체 게시물 가져오기
+  constructor(private boardService: BoardsService) {}
+  //Read
   @Get()
-  getAllBoard(): Board[] {
-    return this.boardsService.getAllBoards();
+  getBoardAll(): Promise<Board[]> {
+    return this.boardService.getBoardAll();
   }
-  // [2-1] 특정 값이 포함된 게시물 가져오기
-  @Get('/:id')
-  getBoardById(@Param('id') id: string): Board {
-    return this.boardsService.getBoardById(id);
-  }
-  // [2-2] params값이 여러개 일 경우, @Param() params: string[]
 
-  // Create
+  @Get('/:id')
+  getBoardById(@Param('id', ValidateObjectId) id: ObjectId): Promise<Board> {
+    return this.boardService.getBoardById(id);
+  }
+
+  //Create
   @Post()
   @UsePipes(ValidationPipe)
-  createBoard(@Body() createBoardDto: CreateBoardDto): Board {
-    return this.boardsService.createBoard(createBoardDto);
+  createBoard(@Body() createBoardDto: CreateBoardDto): Promise<Board> {
+    return this.boardService.createBoard(createBoardDto);
   }
 
-  // Update
+  //Update
   @Patch('/:id/status')
-  updateBoardStatus(
-    @Param('id') id: string,
+  updateBoard(
+    @Param('id') id: ObjectId,
     @Body('status', BoardStatusValidationPipe) status: BoardStatus,
-  ) {
-    return this.boardsService.updateBoardStatus(id, status);
+  ): Promise<Board> {
+    return this.boardService.updateBoard(id, status);
   }
 
-  // Delete
-  @Delete('/:id')
-  deleteBoard(@Body('id') id: string): void {
-    this.boardsService.deleteBoard(id);
+  //Delete
+  @Delete()
+  deleteBoard(@Body('id', ValidateObjectId) id: ObjectId): Promise<string> {
+    return this.boardService.deleteBoard(id);
   }
 }
