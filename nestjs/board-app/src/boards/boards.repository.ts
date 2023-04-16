@@ -22,8 +22,7 @@ export class BoardRepository {
       description: createBoardDto.description,
       status: BoardStatus.PUBLIC,
     };
-    const createdBoard = new this.boardModel(board);
-    return await createdBoard.save();
+    return await new this.boardModel(board).save();
   }
 
   async update(id: ObjectId, status: string): Promise<Board> {
