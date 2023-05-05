@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Board</title>
+    <script>
+        function updateBoard() {
+            const form = document.getElementById("updateBoardForm");
+            if (form.name.value && form.content.value) {
+                fetch(`/board`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        id: form.id.value,
+                        name: form.name.value,
+                        content: form.content.value,
+                    })
+                })
+                .then((res) => res.status===200 ? document.location.href="/" : alert("error"));
+            } else {
+                alert("값을 모두 입력해주세요!");
+            }
+        };
+    </script>
+</head>
+<body>
+    <h2>Update</h2>
+    <form id="updateBoardForm">
+        <input type="hidden" name="id" th:value="${board.id}" />
+        이름: <input type="text" name="name" th:value="${board.name}" placeholder="이름을 입력하세요."/><br>
+        내용: <input type="text" name="content" th:value="${board.content}" placeholder="내용을 입력하세요."/><br>
+    </form>
+    <button onclick="updateBoard();">수정 하기</button>
+</body>
+</html>
