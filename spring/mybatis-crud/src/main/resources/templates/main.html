@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Main</title>
+    <style>
+        table {
+            width: 80%;
+            margin: 0 auto;
+            border: 1px solid #000;
+            border-collapse: collapse;
+        }
+        tr, th, td {
+            border: 1px solid #000;
+        }
+        .create_search_box {
+            width: 80%;
+            margin: 30px auto 10px auto;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.4.slim.js" integrity="sha256-dWvV84T6BhzO4vG6gWhsWVKVoa4lVmLnpBOZh/CAHU4=" crossorigin="anonymous"></script>
+    <script>
+        function searchEmployee() {
+            const select = $("#employee option:selected").val();
+            const search = $("#searchInput").val();
+            const data = {};
+            select === 'id' || select === 'phone' ? data[select] = Number(search) : data[select] = search;
+            fetch('/user/search',{
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+            .then((res) => res.json())
+            .then((data) => {
+                $('.table_tr').remove();
+                for (let i=0 ; i<data.length ; i++) {
+                    $('.table').append(`
+                        <tr class='table_tr'>
+                            <td>${data[i].no}</td>
+                            <td>${data[i].id}</td>
+                            <td>${data[i].grade}</td>
+                            <td>${data[i].name}</td>
+                            <td>${data[i].phone}</td>
+                            <td>${data[i].email}</td>
+                        </tr>
+                    `);
+                };
+            });
+        };
+        function updateEmployee(id) {
+            const form = document.getElementById("go_update"+id);
+            form.submit();
+        };
+        function deleteEmployee(id) {
+            fetch(`/user/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            })
+            .then((res) => {
+                if(res.status === 200) location.reload();
+            });
+        };
+    </script>
+</head>
+<body>
+    <div class="create_search_box">
+        <button onclick="location.href='/user';">회원 추가</button>
+        <div style="display: inline-block">
+            <select id="employee">
+                <option value="id">직원번호</option>
+                <option value="grade">직급</option>
+                <option value="name">이름</option>
+                <option value="email">이메일</option>
+                <option value="phone">번호</option>
+            </select>
+            <input type="text" id="searchInput"/>
+            <button onclick="searchEmployee();">회원 검색</button>
+        </div>
+    </div>
+    <table class="table">
+        <tr>
+            <th>Index</th>
+            <th>직원번호</th>
+            <th>직급</th>
+            <th>이름</th>
+            <th>이메일</th>
+            <th>전화번호</th>
+        </tr>
+        <tr class="table_tr" th:each="user:${userList}">
+            <td th:text="${user.no}">글번호</td>
+            <td th:text="${user.id}">직원번호</td>
+            <td th:text="${user.grade}">직급</td>
+            <td th:text="${user.name}">이름</td>
+            <td th:text="${user.email}">이메일</td>
+            <td th:text="${user.phone}">전화번호</td>
+            <td>
+                <form th:id="'go_update'+${user.id}" th:action="@{/user/{id}(id=${user.id})}" method="get">
+                    <button th:onclick="updateEmployee([[${user.id}]]);">update</button>
+                </form>
+                <button th:onclick="deleteEmployee([[${user.id}]]);">delete</button>
+            </td>
+        </tr>
+    </table>
+    <div style="width: 80%; margin: 10px auto 0 auto;">
+        <button onclick="location.href='/download';">csv다운로드</button>
+    </div>
+</body>
+</html>

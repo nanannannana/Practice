@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="practice.mybatiscrud.Mapper.MainMapper">
+    <select id="findAll"  parameterType="practice.mybatiscrud.Dto.UserDTO" resultType="practice.mybatiscrud.Domain.User">
+        SELECT * FROM employee
+        <where>
+            <if test="id != null and id != 0">
+                id = #{id}
+            </if>
+            <if test="grade != null">
+                grade = #{grade}
+            </if>
+            <if test="name != null">
+                name = #{name}
+            </if>
+            <if test="phone != null and phone != 0">
+                phone = #{phone}
+            </if>
+            <if test="email != null">
+                email = #{email}
+            </if>
+        </where>
+    </select>
+
+    <select id="findOne" parameterType="int" resultType="practice.mybatiscrud.Domain.User">
+        SELECT * FROM employee WHERE id = #{id}
+    </select>
+
+    <insert id="insert" parameterType="practice.mybatiscrud.Domain.User">
+        INSERT INTO employee (id, grade, name, phone, email) VALUES (#{id}, #{grade}, #{name}, #{phone}, #{email})
+    </insert>
+
+    <update id="update" parameterType="practice.mybatiscrud.Dto.UserDTO">
+        UPDATE employee SET id=#{id}, grade=#{grade}, name=#{name}, phone=#{phone}, email=#{email} WHERE id=#{id}
+    </update>
+
+    <delete id="deleteOne" parameterType="int">
+        DELETE FROM employee where id=#{id}
+    </delete>
+</mapper>

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Update</title>
+    <script>
+        function updateUser() {
+            const form = document.getElementById('update_form');
+            fetch('/user', {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    id: form.id.value,
+                    grade: form.grade.value,
+                    name: form.name.value,
+                    phone: form.phone.value,
+                    email: form.email.value
+                }),
+            })
+            .then((res) => {
+                if(res.status === 200) location.href="/";
+            });
+        };
+    </script>
+</head>
+<body>
+    <h2>직원 정보 수정</h2>
+    <form id="update_form">
+        직원 번호: <input type="number" name="id" th:value="${user.id}"/><br />
+        직급: <input type="text" name="grade" th:value="${user.grade}"/><br />
+        이름: <input type="text" name="name" th:value="${user.name}"/><br />
+        전화번호: <input type="number" name="phone" th:value="${user.phone}"/><br />
+        이메일: <input type="email" name="email" th:value="${user.email}"/><br />
+    </form>
+    <button onclick="updateUser();">직원 정보 수정</button>
+</body>
+</html>
